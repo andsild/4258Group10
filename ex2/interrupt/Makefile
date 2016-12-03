@@ -10,6 +10,7 @@ OBJDIR = obj
 
 SOURCES = $(wildcard $(SRCDIR)/*.c) 
 OBJECTS = $(SOURCES:$(SRCDIR)/%.c=$(OBJDIR)/%.o)
+GNUINDENTBACKUPFILES=$(wildcard $(SRCDIR)/*.c~ $(INCLUDEDIR)/*.h~) 
 
 CC=arm-none-eabi-gcc
 LD=arm-none-eabi-gcc
@@ -45,5 +46,5 @@ upload :
 
 .PHONY : clean
 clean :
-	@$(RM) -rv $(OBJECTS) $(OBJDIR)
+	@$(RM) -rv $(OBJECTS) $(OBJDIR) $(GNUINDENTBACKUPFILES)
 	@-rm -rvf *.o *.elf *.bin *.hex 
